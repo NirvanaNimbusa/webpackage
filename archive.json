@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2020-12-04T06:09:13.970932+00:00",
+  "timestamp": "2021-01-12T06:09:08.012210+00:00",
   "repo": "WICG/webpackage",
   "labels": [
     {
@@ -8568,7 +8568,7 @@
       ],
       "body": "Currently there is no enforced relationship between the URL used to look up resources in the package, and where the resource came from online.  Consistent URLs are an imperfect, but extremely useful signal for privacy protecting tools (filter lists, adblockers, disconnect, Firefox and Edge built in protections, safe browsing, etc.).  \r\n\r\nThe current proposal would allow for all WebPackage'd sites to circumvent all URL based tools by simply randomizing URLs as a post processing step in [amppackager](https://github.com/ampproject/amppackager) or similar.  This could even be done per-request per page.  Since URLs are effectively just indexes into the package (and not keys for decision making, caching, etc), they can be changed arbitrarily w/o affecting how the package loads, but preventing the URL-based privacy preserving tools from running.\r\n\r\nA (partial) possible solution to the problem is to play a [cut-and-choose](https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/zhu), commitment-auditing style games with the URLs.  At package time, the packager has to make commitments about which URL each resource came from, and the size, shape etc of the resource.  These can be made / mixed with the URL of the page being packaged. \r\n\r\nThe client can then, w/ some probability, audit some number of the URLs in the package.  If the commitments fail, deterring counter measures can be taken against the packing origin (e.g. global decaying block list of misbehaving packagers, etc).",
       "createdAt": "2020-01-28T21:18:35Z",
-      "updatedAt": "2020-10-20T00:17:07Z",
+      "updatedAt": "2020-12-08T05:13:15Z",
       "closedAt": null,
       "comments": [
         {
@@ -8815,6 +8815,13 @@
           "body": "I am a bit appalled.\r\n\r\nThe elephant in the room is the argument that because evil exists and thrives anyway despite costs or existing countermeasures, then the \"obvious\" solution would be to go ahead and make it the standard.\r\n\r\nIn other words: Because, say, theft will always happen, no matter what society does to prevent it, then society should make it legal, providing thiefs with a set of free and standard tools and means to commit the perfect crime. That way society saves the hassle of investigations, arresting, judging, etc.  On top of that, good citizens would also always find cool ways to use those tools too. Clever, huh?\r\n\r\nKind of akin the freedom of gun possession talk. Yeah, it'd be a cool thing to have brutally powerful automatic weapons cheaply available in the nearest news kiosk, bakery, or gas station.  I would love to have one, to shoot at cans and impress girls into what a wonderful and heroic male I am for mating. On the other hand, all kind of crooks, nuts, inferiority complex wackos and other psychosocial lunatics, perverts, criminals and troglodites would also love it. But not exacly to shoot at cans.\r\n\r\nI watch the news. There is a reason why God didn't give donkeys horns.\r\n\r\nAs a developer, I am extremely excited to use this extremely cool technology. I can't wait to learn the (soon-to-be?) \"new standard\".  And, boy, do I already have ideas of how to use it, dude!\r\n\r\nAs a responsible citizen and father, and as a simple user myself, I feel totally different, though.  The geek kid inside me can't convince the mature man that worries about a rare, dying concept: ethics. Society can't be all about technology and code details, without the faintest high level concerns about boundaries, purposes and consequences framing it.  Without that frame, all this is nothing but juvenile. Cool, but juvenile. Sorry.\r\n\r\nThat blurred and now very alien concept (\"ethics\") still matters to me, more than the excitement of debating geekie latency details or implementations of countermeasures against countermeasures of \"clever\" pieces of code.\r\n\r\nIn the contest of \"who is more clever\": the geek who wants to do a thing just because he can, vs. the geek who disagrees on details of the implementation, the winner is...\r\n\r\n...definitely not society or civil rights, let alone ethics, decency or intelligency itself.\r\n\r\nI trust that in Google there should certainly be senior management willing to look at this from high above the nuts and bolts, variables, arrays, classes, functions, if/then, semi-colons, O(N) and so forth, and give it a truly responsible thought, purpose and direction for the sake of the Internet for the Good of the Society.",
           "createdAt": "2020-09-01T16:17:32Z",
           "updatedAt": "2020-09-01T16:17:32Z"
+        },
+        {
+          "author": "tauin",
+          "authorAssociation": "NONE",
+          "body": "Frankly this is going to ruin the web",
+          "createdAt": "2020-12-08T05:13:15Z",
+          "updatedAt": "2020-12-08T05:13:15Z"
         }
       ]
     },
@@ -9076,7 +9083,7 @@
       ],
       "body": "https://github.com/WICG/webpackage/blob/master/explainers/subresource-loading.md declares how, essentially, adding a link tag will change how, and if, some scripts on the page are being loaded.\r\n\r\nAdding that primitive to the platform makes it harder to protect existing applications from XSS, as it bypasses existing methods that guard script loading (and likely server-side XSS mitigations like XSS filters are unaware of those new vectors as well). \r\n\r\nFor example, right now there's no requirement to have a CSP nonce in `<link rel=\"webbundle\">`, and modifying the bundle scope in javascript does not require a [Trusted Type](https://github.com/w3c/webappsec-trusted-types), and yet adding that element may, IIUC, cause arbitrary scripts to get loaded, or prevent them from being loaded.\r\n\r\nNew mechanisms that alter script loads should be programmatic, and not declarative. \r\n\r\n/ cc @arturjanc @mikewest @lweichselbaum",
       "createdAt": "2020-05-12T08:43:57Z",
-      "updatedAt": "2020-08-27T20:06:54Z",
+      "updatedAt": "2020-12-08T18:21:47Z",
       "closedAt": null,
       "comments": [
         {
@@ -9120,6 +9127,41 @@
           "body": "They would, but we'd wind up with a preloading interface that's very different from what HTML has used in the past. I'll [ask](https://lists.w3.org/Archives/Public/public-web-perf/2020Aug/0027.html) the webperf mailing list for opinions.",
           "createdAt": "2020-08-27T18:51:14Z",
           "updatedAt": "2020-08-27T20:06:54Z"
+        },
+        {
+          "author": "terjanq",
+          "authorAssociation": "NONE",
+          "body": "Bumping this up, did we achieve any consensus on this? @koto @jyasskin \r\n\r\nwebbundle seems indeed very similar to `rel=import`, although it also seems much more restrictive than the import. This could potentially cause breakages of the CSP, which might need some compromises (loopholes) to be able to load the bundle in the first place. \r\n\r\nBut strictly from the security perspective, we've also had (still have actually) a similar mechanism `app cache manifest`, which had a similar permission system and still was widely abused (https://www.slideshare.net/fransrosen/attacking-modern-web-technologies). \r\n\r\nI am more leaning towards @koto statement that this is just too risky, even with these strict conditions because it was proven in the past that these restrictions can often be fulfilled. \r\n\r\n> 1. Let users upload content to an origin.\r\n> 2. Serve actual scripts from the same path or a subpath of the user-provided content. (Ew, but might not already be exploitable?)\r\n> 3. Add the application/web-bundle mime type.\r\n> 4. Have the gadget that lets an attacker add that arbitrary `<link>`.\r\n",
+          "createdAt": "2020-12-08T12:50:53Z",
+          "updatedAt": "2020-12-08T17:44:09Z"
+        },
+        {
+          "author": "terjanq",
+          "authorAssociation": "NONE",
+          "body": "I was thinking more about the issue and I thought about a potential solution. `<script>` tags by default already implement `type` attribute and we could potentially require every script to have `type=\"bundle\"` to be able to access the resource from the bundle. That would require changing both `<link>` and `<script>` in that case. Not sure what to do with `<link rel=stylesheet href=xxx>` since these should probably be also protected against being controlled by an attacker.\r\n\r\nWhat do you think? Are `<script>` and `<link>` tags the only concern for bypassing the HTML sanitizers? \r\n\r\n",
+          "createdAt": "2020-12-08T13:30:14Z",
+          "updatedAt": "2020-12-08T13:30:40Z"
+        },
+        {
+          "author": "littledan",
+          "authorAssociation": "NONE",
+          "body": "I'm a little worried about disabling header-based resource hints when it comes to bundle-based subresource loading. Wouldn't it be most useful if we had a serialization which worked for both HTML and HTTP headers, so that the fetch to the bundle could run ASAP? We could do this by using Link: headers but disabling the `<link>` tag and using a separate `<script>` tag format for that case, for example.",
+          "createdAt": "2020-12-08T17:59:38Z",
+          "updatedAt": "2020-12-08T17:59:38Z"
+        },
+        {
+          "author": "jyasskin",
+          "authorAssociation": "MEMBER",
+          "body": "We haven't found consensus on this yet. I believe the path-based restrictions alluded to [here](https://github.com/WICG/webpackage/blob/master/explainers/navigation-to-unsigned-bundles.md#loading-an-authoritative-unsigned-bundle) and [here](https://github.com/WICG/webpackage/blob/master/explainers/subresource-loading.md#link-based-api) convinced @koto that this wasn't a blocking issue, so the plan was to do an origin trial with `<link>` tags and re-evaluate from there.\r\n\r\nThe webperf list was [friendly](https://lists.w3.org/Archives/Public/public-web-perf/2020Aug/0032.html) to using `<script>` or `<base>` tags for declarative bundle declarations inside the document, which seems fine to me. The list didn't discuss how to do the same in response headers, but `Link` seems fine there?\r\n\r\n`<link rel=stylesheet href=url_inside_bundle>` seems like not a new risk if the site already allows the attacker to inject arbitrary `<link>` tags. \ud83d\ude09   But if we attach bundles using `<script type=a_bundle_is_declared_here>` or similar, this is protected too.",
+          "createdAt": "2020-12-08T18:10:20Z",
+          "updatedAt": "2020-12-08T18:10:20Z"
+        },
+        {
+          "author": "terjanq",
+          "authorAssociation": "NONE",
+          "body": "> `<link rel=stylesheet href=url_inside_bundle>` seems like not a new risk if the site already allows the attacker to inject arbitrary `<link>` tags. \ud83d\ude09 But if we attach bundles using `<script type=a_bundle_is_declared_here>` or similar, this is protected too.\r\n\r\nI know sanitizers that allow `<link>` elements because these are usually not harfmul, e.g. `<link rel=\"icon\">` is commonly allowed. They usually block `stylesheet`, `import`, etc. but rest seems to be allowed. So I would argue that this is something to solve. ",
+          "createdAt": "2020-12-08T18:21:31Z",
+          "updatedAt": "2020-12-08T18:21:47Z"
         }
       ]
     },
@@ -9611,9 +9653,31 @@
       "labels": [],
       "body": "I've been designing as if we could have a page like https://web.archive.org/web/20200914192731/https://www.example.com/ serve a web bundle that it doesn't do a lot of work to vet because it winds up executing in a suborigin. However, @wycats pointed out that that could allow https://web.archive.org/web/20200914192731/https://attack.web.archive.evil.example/ to show a login form for https://web.archive.org, and because [the browser would emphasize the serving origin](https://github.com/wicg/webpackage/blob/master/explainers/bundle-urls-and-origins.md#rendering-the-url-bar), it would probably fool the user. See also some discussion on #560.\r\n\r\nA couple thoughts:\r\n* This is still better than the current situation, where an unvalidated archived site can just exfiltrate login cookies.\r\n* Some discussion in #576 suggests a way to mark a bundle as having no network access, which might prevent it from using any credentials it manages to phish. Is that sufficient?\r\n* This probably isn't a worry for bundles accessed as `file:`s?",
       "createdAt": "2020-09-16T19:35:12Z",
-      "updatedAt": "2020-09-16T19:35:12Z",
+      "updatedAt": "2020-12-14T18:15:34Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "TimothyEBaldwin",
+          "authorAssociation": "NONE",
+          "body": "Prohibiting network access does not prevent exfiltrating the phished credentials by using a side channel, such as CPU, GPU and memory usage, electricity consumption, or displaying them possibly in a covert fashion.",
+          "createdAt": "2020-12-10T21:10:17Z",
+          "updatedAt": "2020-12-10T21:10:17Z"
+        },
+        {
+          "author": "quasicomputational",
+          "authorAssociation": "NONE",
+          "body": "Is it too late in the day to suggest that unsigned bundles should always be an opaque suborigin unless the distributor explicitly sets a header requesting that it be treated as authoritative (in which case the browser will treat it as authoritative iff distributor origin == publisher origin, as the plan is now)?",
+          "createdAt": "2020-12-12T22:07:37Z",
+          "updatedAt": "2020-12-12T22:07:37Z"
+        },
+        {
+          "author": "jyasskin",
+          "authorAssociation": "MEMBER",
+          "body": "@quasicomputational It's not too late in the day, but I think that's also orthogonal to the question of how to protect sites that want to serve bundled archives of cross-origin sites, which would always live in suborigins. The similar fix here might be to put bundles in completely opaque origins, giving users no indication of where the bundle comes from or what it claims to be a copy of when they're reading it.",
+          "createdAt": "2020-12-14T18:15:34Z",
+          "updatedAt": "2020-12-14T18:15:34Z"
+        }
+      ]
     },
     {
       "number": 600,
@@ -50844,6 +50908,48 @@
           "body": "LGTM.",
           "createdAt": "2020-12-04T05:17:02Z",
           "updatedAt": "2020-12-04T05:17:02Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 608,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTUzMjA5Mjk5",
+      "title": "Introduce scopes attribute for subresource Web Bundles link.",
+      "url": "https://github.com/WICG/webpackage/pull/608",
+      "state": "MERGED",
+      "author": "horo-t",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Currently the explainer of \"subresource loading with Web Bundles\" is\r\nusing a new \"scope\" attribute of the link element. However the new\r\nattribute should be \"scopes\" that accept multiple scopes, giving web\r\ndevelopers more flexibility. For example, in this case, some dynamic\r\ncontents can be under \"https://example.com/dir/api/\".\r\n\r\nSo this PR changes the explainer to use \"scopes\".",
+      "createdAt": "2021-01-12T05:57:31Z",
+      "updatedAt": "2021-01-12T06:07:35Z",
+      "baseRepository": "WICG/webpackage",
+      "baseRefName": "master",
+      "baseRefOid": "a29dd77f79b1a837cbe2831852a6249d722fef98",
+      "headRepository": "horo-t/webpackage",
+      "headRefName": "linkscopes",
+      "headRefOid": "5d40e1bbd1cfcca286d0a36fe882e9a09573f025",
+      "closedAt": "2021-01-12T06:07:35Z",
+      "mergedAt": "2021-01-12T06:07:35Z",
+      "mergedBy": "hayatoito",
+      "mergeCommit": {
+        "oid": "4c8ee9a5db881490cd1108a04570ec00e524f89b"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTY1OTYxNjQz",
+          "commit": {
+            "abbreviatedOid": "5d40e1b"
+          },
+          "author": "hayatoito",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Thanks! I think `scopes` would be an improvement.",
+          "createdAt": "2021-01-12T06:07:16Z",
+          "updatedAt": "2021-01-12T06:07:16Z",
           "comments": []
         }
       ]
