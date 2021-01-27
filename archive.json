@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-01-12T06:09:08.012210+00:00",
+  "timestamp": "2021-01-27T20:47:24.314611+00:00",
   "repo": "WICG/webpackage",
   "labels": [
     {
@@ -8568,7 +8568,7 @@
       ],
       "body": "Currently there is no enforced relationship between the URL used to look up resources in the package, and where the resource came from online.  Consistent URLs are an imperfect, but extremely useful signal for privacy protecting tools (filter lists, adblockers, disconnect, Firefox and Edge built in protections, safe browsing, etc.).  \r\n\r\nThe current proposal would allow for all WebPackage'd sites to circumvent all URL based tools by simply randomizing URLs as a post processing step in [amppackager](https://github.com/ampproject/amppackager) or similar.  This could even be done per-request per page.  Since URLs are effectively just indexes into the package (and not keys for decision making, caching, etc), they can be changed arbitrarily w/o affecting how the package loads, but preventing the URL-based privacy preserving tools from running.\r\n\r\nA (partial) possible solution to the problem is to play a [cut-and-choose](https://www.usenix.org/conference/usenixsecurity16/technical-sessions/presentation/zhu), commitment-auditing style games with the URLs.  At package time, the packager has to make commitments about which URL each resource came from, and the size, shape etc of the resource.  These can be made / mixed with the URL of the page being packaged. \r\n\r\nThe client can then, w/ some probability, audit some number of the URLs in the package.  If the commitments fail, deterring counter measures can be taken against the packing origin (e.g. global decaying block list of misbehaving packagers, etc).",
       "createdAt": "2020-01-28T21:18:35Z",
-      "updatedAt": "2020-12-08T05:13:15Z",
+      "updatedAt": "2021-01-27T17:44:52Z",
       "closedAt": null,
       "comments": [
         {
@@ -8822,6 +8822,13 @@
           "body": "Frankly this is going to ruin the web",
           "createdAt": "2020-12-08T05:13:15Z",
           "updatedAt": "2020-12-08T05:13:15Z"
+        },
+        {
+          "author": "qertis",
+          "authorAssociation": "NONE",
+          "body": "We need to stop webpackage",
+          "createdAt": "2021-01-27T17:44:51Z",
+          "updatedAt": "2021-01-27T17:44:51Z"
         }
       ]
     },
@@ -9795,6 +9802,22 @@
           "updatedAt": "2020-11-19T14:55:41Z"
         }
       ]
+    },
+    {
+      "number": 609,
+      "id": "MDU6SXNzdWU3ODQwMDk2NzQ=",
+      "title": "Clarify how CORS behaves for Subresource Loading with WebBundles",
+      "url": "https://github.com/WICG/webpackage/issues/609",
+      "state": "OPEN",
+      "author": "hayatoito",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "It would be better to clarify how CORS behaves for [Subresource Loading with WebBundles](\r\nhttps://github.com/WICG/webpackage/blob/master/explainers/subresource-loading.md).\r\n\r\nI'm trying to write WPT [here](https://chromium-review.googlesource.com/c/chromium/src/+/2617167/), however, the explainer should be also updated to clarify how CORS works.",
+      "createdAt": "2021-01-12T08:05:20Z",
+      "updatedAt": "2021-01-12T08:05:20Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -50950,6 +50973,103 @@
           "body": "Thanks! I think `scopes` would be an improvement.",
           "createdAt": "2021-01-12T06:07:16Z",
           "updatedAt": "2021-01-12T06:07:16Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 610,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTYyMDA2NjQ3",
+      "title": "Write an index to the explainers.",
+      "url": "https://github.com/WICG/webpackage/pull/610",
+      "state": "OPEN",
+      "author": "jyasskin",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "@philipwalton @khempenius, do you think this makes it easy enough to find the explainers?",
+      "createdAt": "2021-01-26T19:29:53Z",
+      "updatedAt": "2021-01-27T13:18:24Z",
+      "baseRepository": "WICG/webpackage",
+      "baseRefName": "master",
+      "baseRefOid": "4c8ee9a5db881490cd1108a04570ec00e524f89b",
+      "headRepository": "jyasskin/webpackage",
+      "headRefName": "update-explainer",
+      "headRefOid": "c1c6f71b0c75b6e213e3d44f7ee970de48edfe8e",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTc3MzI0MzU1",
+          "commit": {
+            "abbreviatedOid": "c1c6f71"
+          },
+          "author": "yoavweiss",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM",
+          "createdAt": "2021-01-27T13:18:24Z",
+          "updatedAt": "2021-01-27T13:18:24Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 611,
+      "id": "MDExOlB1bGxSZXF1ZXN0NTYyMTk2MzM0",
+      "title": "dump-signedexchange: add -headerIntegrity flag",
+      "url": "https://github.com/WICG/webpackage/pull/611",
+      "state": "MERGED",
+      "author": "twifkak",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "When specified, only prints the header-integrity value for the given signed\r\nexchange, as needed for subresource substitution.",
+      "createdAt": "2021-01-27T03:19:08Z",
+      "updatedAt": "2021-01-27T18:13:21Z",
+      "baseRepository": "WICG/webpackage",
+      "baseRefName": "master",
+      "baseRefOid": "4c8ee9a5db881490cd1108a04570ec00e524f89b",
+      "headRepository": "twifkak/webpackage",
+      "headRefName": "header_integrity",
+      "headRefOid": "0ae512b062a047634ece56160728685560129576",
+      "closedAt": "2021-01-27T18:13:15Z",
+      "mergedAt": "2021-01-27T18:13:15Z",
+      "mergedBy": "twifkak",
+      "mergeCommit": {
+        "oid": "e4a3f1ccd86aaac7aa6298a7163822b8810a0ddf"
+      },
+      "comments": [
+        {
+          "author": "twifkak",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@horo-t Can you mark this PR as non-normative (per the ipr check), or do you know who can?",
+          "createdAt": "2021-01-27T03:21:03Z",
+          "updatedAt": "2021-01-27T03:21:03Z"
+        },
+        {
+          "author": "w3cbot",
+          "authorAssociation": "NONE",
+          "body": "[horo-t](https://github.com/horo-t) marked as non substantive for IPR from ash-nazg.",
+          "createdAt": "2021-01-27T12:44:57Z",
+          "updatedAt": "2021-01-27T12:44:57Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTc3Mjk3ODI2",
+          "commit": {
+            "abbreviatedOid": "0ae512b"
+          },
+          "author": "horo-t",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "lgtm\r\nThank you.",
+          "createdAt": "2021-01-27T12:46:23Z",
+          "updatedAt": "2021-01-27T12:46:23Z",
           "comments": []
         }
       ]
