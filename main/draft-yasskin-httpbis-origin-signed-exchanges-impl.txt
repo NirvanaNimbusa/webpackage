@@ -5,7 +5,7 @@
 Network Working Group                                         J. Yasskin
 Internet-Draft                                               K. Sakamoto
 Intended status: Standards Track                                  Google
-Expires: 16 July 2021                                    12 January 2021
+Expires: 31 July 2021                                    27 January 2021
 
 
             Signed HTTP Exchanges Implementation Checkpoints
@@ -43,7 +43,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 July 2021.
+   This Internet-Draft will expire on 31 July 2021.
 
 Copyright Notice
 
@@ -1160,8 +1160,8 @@ Signature:
    [I-D.ietf-httpbis-cache]
               Fielding, R., Nottingham, M., and J. Reschke, "HTTP
               Caching", Work in Progress, Internet-Draft, draft-ietf-
-              httpbis-cache-13, 14 December 2020, <http://www.ietf.org/
-              internet-drafts/draft-ietf-httpbis-cache-13.txt>.
+              httpbis-cache-14, 12 January 2021, <http://www.ietf.org/
+              internet-drafts/draft-ietf-httpbis-cache-14.txt>.
 
    [I-D.thomson-http-mice]
               Thomson, M. and J. Yasskin, "Merkle Integrity Content
