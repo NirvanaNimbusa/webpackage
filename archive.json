@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2021-01-27T20:47:24.314611+00:00",
+  "timestamp": "2021-02-02T21:07:36.295334+00:00",
   "repo": "WICG/webpackage",
   "labels": [
     {
@@ -9816,6 +9816,22 @@
       "body": "It would be better to clarify how CORS behaves for [Subresource Loading with WebBundles](\r\nhttps://github.com/WICG/webpackage/blob/master/explainers/subresource-loading.md).\r\n\r\nI'm trying to write WPT [here](https://chromium-review.googlesource.com/c/chromium/src/+/2617167/), however, the explainer should be also updated to clarify how CORS works.",
       "createdAt": "2021-01-12T08:05:20Z",
       "updatedAt": "2021-01-12T08:05:20Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 612,
+      "id": "MDU6SXNzdWU3OTk2MTc0NzM=",
+      "title": "Should content negotiation be part of the webpackage format?",
+      "url": "https://github.com/WICG/webpackage/issues/612",
+      "state": "OPEN",
+      "author": "littledan",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "All of the applications on the Web that I know of will do content negotiation to decide which bundle to send, not within the bundle on the client side. I'm wondering whether the format should include client-side declarative content negotiation.",
+      "createdAt": "2021-02-02T19:42:07Z",
+      "updatedAt": "2021-02-02T19:42:07Z",
       "closedAt": null,
       "comments": []
     }
@@ -50982,25 +50998,49 @@
       "id": "MDExOlB1bGxSZXF1ZXN0NTYyMDA2NjQ3",
       "title": "Write an index to the explainers.",
       "url": "https://github.com/WICG/webpackage/pull/610",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "jyasskin",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "@philipwalton @khempenius, do you think this makes it easy enough to find the explainers?",
       "createdAt": "2021-01-26T19:29:53Z",
-      "updatedAt": "2021-01-27T13:18:24Z",
+      "updatedAt": "2021-02-02T20:16:02Z",
       "baseRepository": "WICG/webpackage",
       "baseRefName": "master",
-      "baseRefOid": "4c8ee9a5db881490cd1108a04570ec00e524f89b",
+      "baseRefOid": "e4a3f1ccd86aaac7aa6298a7163822b8810a0ddf",
       "headRepository": "jyasskin/webpackage",
       "headRefName": "update-explainer",
-      "headRefOid": "c1c6f71b0c75b6e213e3d44f7ee970de48edfe8e",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "headRefOid": "4150974417d9b9afdb62ba0362df1fc5d6ff150f",
+      "closedAt": "2021-02-02T20:15:58Z",
+      "mergedAt": "2021-02-02T20:15:58Z",
+      "mergedBy": "jyasskin",
+      "mergeCommit": {
+        "oid": "6a24231dd13ad3b38a14f7372daba43f6e57268e"
+      },
+      "comments": [
+        {
+          "author": "philipwalton",
+          "authorAssociation": "NONE",
+          "body": "Thanks, this is definitely helpful. One question: what are your thoughts on putting all the content of the explainers.md page (since it's not a lot) into the main README? That might make it even easier to find for folks just driving by.",
+          "createdAt": "2021-01-29T22:35:16Z",
+          "updatedAt": "2021-01-29T22:35:16Z"
+        },
+        {
+          "author": "jyasskin",
+          "authorAssociation": "MEMBER",
+          "body": "@philipwalton Good idea; how's this?",
+          "createdAt": "2021-02-01T22:50:27Z",
+          "updatedAt": "2021-02-01T22:50:27Z"
+        },
+        {
+          "author": "philipwalton",
+          "authorAssociation": "NONE",
+          "body": "Looks great, thanks!",
+          "createdAt": "2021-02-02T19:50:47Z",
+          "updatedAt": "2021-02-02T19:50:47Z"
+        }
+      ],
       "reviews": [
         {
           "id": "MDE3OlB1bGxSZXF1ZXN0UmV2aWV3NTc3MzI0MzU1",
